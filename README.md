@@ -60,7 +60,7 @@ This is a work in progress!
   However, faster storage is completely unnecessary for this build---it costs more and uses more power, which could be problematic for some use cases.
 - **Plus the items below**:
 
-### Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
+### Option 1: Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
 
 - Software-defined radio w/ included bandpass filter: [FlightAware Pro Stick Plus](https://flightaware.store/products/pro-stick-plus)
   - **Note:** if you plan to "upgrade" to a more sophisticated setup in the future, you may want to purchase a simpler software-defined radio *without* an included bandpass filter.
@@ -81,12 +81,11 @@ This is a work in progress!
   - **Note 4:** the authors believe the above cables are good quality choices for non-permanent installations.
   If you have specific needs for cable routing/flexibility, or if you are planning a very long cable run, we recommend doing some research on the different types of cable (e.g., KMR400 vs. KMR240) and using that information to find a suitable cable for your application.
 
-
-### Portable ADS-B Receiver - Vehicle or Camping Usage
+### Option 2: Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
 
 Fill in details
 
-### Roof-Mounted Setup
+### Option 3: Permanent Roof-Mounted Setup
 
 Fill in details
 
