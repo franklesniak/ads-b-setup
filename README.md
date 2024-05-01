@@ -41,7 +41,7 @@ It is used to bootstrap the overall setup process and it is where some configura
 
 ### Supported Locales
 
-The authors are based in the United States of America, speak English (US) and use an English (US) keyboard layout, and are in the Central US time zone.
+The authors are based in the United States of America, speak English (US), use an English (US) keyboard layout, and are in the Central US time zone.
 Accordingly, the products listed and the instructions in this repository will be US and English-centric.
 However, it is possible to complete these steps using alternative languages, locales, etc.
 
@@ -49,18 +49,38 @@ However, it is possible to complete these steps using alternative languages, loc
 
 This is a work in progress!
 
-- Raspberry Pi Zero 2 W with Pre-Soldered Headers: https://www.pishop.us/product/raspberry-pi-zero-2-w-with-pre-soldered-headers/
-- Micro USB (male) to USB (female) adapter cable: https://amzn.to/3y5Z6LX
-- Plus the items below:
+- A **Raspberry Pi Zero 2 W** with pre-soldered headers: [Raspberry Pi Zero 2 W with pre-soldered headers from PiShop.us](https://www.pishop.us/product/raspberry-pi-zero-2-w-with-pre-soldered-headers/)
+- An **"OTG" adapter cable** (micro USB (male) to USB (female)): [UGREEN Micro USB 2.0 OTG Cable On The Go Adapter Male Micro USB to Female USB - Affiliate Link](https://amzn.to/3y5Z6LX)
+- A **microSD card** is used to store the software of the Raspberry Pi and boot the operating system. Example: [SanDisk Extreme 64GB microSDXC UHS-I Card with A2 Performance Rating - Affiliate Link](https://amzn.to/49TMk0w)
+  - Pretty much any microSD card will do as long as the capacity is greater or equal to 8 GB.
+  - If you purchase from Amazon, we highly recommend ensuring that the microSD card is **shipped and sold by Amazon**.
+  At the time of writing, the one linked above is the least expensive reputable microSD card that is.
+  So, even though 64GB is overkill, this would be our current recommendation!
+  - Some models of Raspberry Pi also support USB storage or even NVMe storage.
+  However, faster storage is completely unnecessary for this build---it costs more and uses more power, which could be problematic for some use cases.
+- **Plus the items below**:
 
-### Simplest Setup - Stationary, Proof of Concept
+### Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
 
-- Software Defined Radio w/ included bandpass filter: https://flightaware.store/products/pro-stick-plus
-  - **Note:** if you plan to "upgrade" to a more sophisticated setup in the future, you may want to purchase the simpler Software Defined Radio (without an included bandpass filter - see below).
-  If you do, you should purchase a standalone bandpass filter.
-  Separating the software defined radio and the bandpass filter should theoretically improve signal quality, although at an additional cost.
-- 1090 MHz antenna: https://amzn.to/4bhtWjm
+- Software-defined radio w/ included bandpass filter: [FlightAware Pro Stick Plus](https://flightaware.store/products/pro-stick-plus)
+  - **Note:** if you plan to "upgrade" to a more sophisticated setup in the future, you may want to purchase a simpler software-defined radio *without* an included bandpass filter.
+  You would instead purchase a separate bandpass filter (see below).
+  Separating the software-defined radio and the bandpass filter should theoretically improve signal quality/range, although it does so at an additional cost.
+- Antenna: [26 in./66 cm, 1090 MHz and 978 MHz combined antenna - affiliate link](https://amzn.to/4bhtWjm)
   - **Note:** if you plan to build a portable ADS-B receiver, e.g., for a vehicle, then you may want to purchase an alternative antenna (see the magnetic option below).
+- One N (male) to SMA (male) cable, like the following:
+  - 1 ft. (30 cm) cable length: [1 ft. N (male) to SMA (male) RG8 cable - affiliate link](https://amzn.to/44maWxI)
+  - 2 ft. (61 cm) cable length: [2 ft. N (male) to SMA (male) "LMR400-equivalent" cable - affiliate link](https://amzn.to/4dndM9W)
+  - 2.87 ft. (85 cm) cable length: [85 cm N (male) to SMA (male) 5D-FB cable - affiliate link](https://amzn.to/3WmA9Gs)
+  - 6 ft. (1.83 m) cable length: [6 ft. N (male) to SMA (male) KMR240 cable - affiliate link](https://amzn.to/4di4ZG9)
+  - 15 ft. (4.57 m) cable length: [15 ft. N (male) to SMA (male) KMR400 cable - affiliate link](https://amzn.to/3Uq7b5M)
+  - **Note:** choose the shortest cable length that works for your application!
+  - **Note 2:** the cables listed are not necessarily suitable for in-wall or riser applications, and they should not be run through HVAC vents/plenums.
+  - **Note 3:** the antenna listed above has an "N" type connector, and the software-defined radio has a "SMA" type connector.
+  If you change the antenna or add other equipment between the antenna and the software-defined radio, you may need a cable with alternative connector types or genders!
+  - **Note 4:** the authors believe the above cables are good quality choices for non-permanent installations.
+  If you have specific needs for cable routing/flexibility, or if you are planning a very long cable run, we recommend doing some research on the different types of cable (e.g., KMR400 vs. KMR240) and using that information to find a suitable cable for your application.
+
 
 ### Portable ADS-B Receiver - Vehicle or Camping Usage
 
@@ -76,10 +96,7 @@ Fill in details
 
 In addition to the core bill of materials, you will need some additional hardware to support your RetroPie build.
 
-- A **microSD card** is required even if you are planning a build that uses SSD or NVMe storage.
-A microSD card is used to load Raspberry Pi OS Lite and update the firmware of your Raspberry Pi.
-  - Pretty much any microSD card will do as long as the capacity is greater or equal to 8 GB.
-  - If you need to purchase a smaller, lower-cost microSD card **for the sole purpose of updating the Raspberry Pi's firmware**, I recommend this 64 GB one from SanDisk: [SanDisk Ultra 64GB microSD UHS-I Card with A1 Performance Rating - Affiliate Link](https://amzn.to/47j14ET).
+
   - If you are building a RetroPie system and planning to use the microSD card for storage (as opposed to a SATA or NVMe SSD), you are going to want a larger card.
 In this case, I recommend this SanDisk Ultra 1.5TB one: [SanDisk Ultra 1.5TB microSDXC UHS-I card with A1 Performance Rating - Affiliate Link](https://amzn.to/41JNZmH).
 Or, for a slightly faster microSD card, get one with an A2 performance rating and slightly less capacity like this Lexar 1TB one: [Lexar PLAY 1TB microSDXC UHS-I card with A2 Performance Rating - Affiliate Link](https://amzn.to/3vqAqwo).
