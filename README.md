@@ -47,7 +47,9 @@ However, it is possible to complete these steps using alternative languages, loc
 
 ## Bill of Materials
 
-This is a work in progress!
+### Base Materials
+
+The following materials apply to all builds:
 
 - A **Raspberry Pi Zero 2 W** with pre-soldered headers: [Raspberry Pi Zero 2 W with pre-soldered headers from PiShop.us](https://www.pishop.us/product/raspberry-pi-zero-2-w-with-pre-soldered-headers/)
 - An **"OTG" adapter cable** (micro USB (male) to USB (female)): [UGREEN Micro USB 2.0 OTG Cable On The Go Adapter Male Micro USB to Female USB - Affiliate Link](https://amzn.to/3y5Z6LX)
@@ -58,7 +60,11 @@ This is a work in progress!
   So, even though 64GB is overkill, this would be our current recommendation!
   - Some models of Raspberry Pi also support USB storage or even NVMe storage.
   However, faster storage is completely unnecessary for this build---it costs more and uses more power, which could be problematic for some use cases.
-- **Plus the items below**:
+- Optional, but recommended: a **case** for the Raspberry Pi Zero 2 W: [Pimoroni Pibow Zero 2 W case](https://www.pishop.us/product/pibow-zero-2-w/)
+
+**You're not done!**
+**More materials are required!**
+Please add items from options 1, 2, or 3 below.
 
 ### Option 1: Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
 
@@ -81,9 +87,10 @@ This is a work in progress!
   - **Note 4:** the authors believe the above cables are good quality choices for non-permanent installations.
   If you have specific needs for cable routing/flexibility, or if you are planning a very long cable run, we recommend doing some research on the different types of cable (e.g., KMR400 vs. KMR240) and using that information to find a suitable cable for your application.
 
-### Option 2: Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
+### Option 2: Indoor or Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
 
-Fill in details
+- Software-defined radio without an included bandpass filter: [FlightAware Pro Stick](https://flightaware.store/products/pro-stick)
+- More to be added
 
 ### Option 3: Permanent Roof-Mounted Setup
 
