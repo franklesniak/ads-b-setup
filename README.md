@@ -155,15 +155,42 @@ However, for the Goal Zero Sherpa 100AC power bank mentioned above, there's a sp
   - **Note:** it would be wise to get several extra washers, as these are very small and easy to lose!
   Additionally, an extra hexagon nut or two can't hurt.
 - Optional, but recommended: an external, magnetic **GPS antenna**: [toyshi waterproof GPS antenna with magnetic base and SMA to uFL converter cable - referral link](https://amzn.to/44lMlct)
+- A note for **permanent vehicle installations**: it may be a good idea to bond the antenna system to a suitable ground point on the vehicle's chassis.
+For more information on this concept, check out: [Grounding and Bonding for the Radio Amateur - affiliate link](https://amzn.to/3JJkWI0).
 
-### Option 4: Permanent Roof-Mounted Setup
+### Option 4: Permanent Outdoor Setup
 
-Fill in details
+- **Grounding** connection: while the specifics of this are out of scope for this guide, you must ensure that the system is bonded to a suitable ground for lightning protection.
+The National Electrical Code standard 810 covers commonly accepted requirements for the grounding and bonding of antenna systems.
+For more information on this concept, check out: [Grounding and Bonding for the Radio Amateur - affiliate link](https://amzn.to/3JJkWI0).
+This guide does not specify equipment for bonding or surge-arresting.
+- **Power supply** for micro USB Raspberry Pis: [CanaKit 5V 2.5A Raspberry Pi power supply - affiliate link](https://amzn.to/3UC7fkd)
+  - **Note:** it may be desirable to consider a solar system to power the Raspberry Pi and antenna system.
+  While the antenna would still need to be bonded to a suitable ground, electrically isolating the antenna system with an "off-grid" solar array and using a Wi-Fi connection for the Raspberry Pi provides a literal "air gap" between the antenna system and your electrical system and network, which gives you additional protection from a lightning strike.
+  The design specifics of an off-grid solar system are outside the scope of this document, but the project [OffGridSolarPS](https://github.com/franklesniak/OffGridSolarPS) might help you plan the requirements for such a system.
+  Based on the m
+- **Software-defined radio** without an included bandpass filter: [FlightAware Pro Stick](https://flightaware.store/products/pro-stick)
+- **Band-pass signal filter**: [FlightAware 1090 MHz band-pass filter](https://flightaware.store/products/band-pass-signal-filter-1090-only-mhz)
+- SMA male to SMA male LMR-240 jumper cable [6 in./15 cm SMA male to SMA male LMR-240, "ultra-flexible" cable](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-lmr-240-uf-coax-fmc0202245-06-p.aspx)
+- **1090 MHz filtered pre-amp**: [Uputronics 1090 MHz ADS-B filtered preamp](https://store.uputronics.com/index.php?route=product/product&path=59&product_id=50)
+  - **Note:** if you are mounting the equipment into a box, you may want to purchase the filtered preamp with the lug kit included.
+  Lugs are easy to remove later if needed.
+  - **Note 2:** the filtered pre-amp will be connected directly to the software-defined radio, so be sure to purchase it with an SMA coupler (male to male)
+- If you don't already have one, a **USB-C power supply** for the filtered pre-amp: [Anker 511 (Nano Pro) USB-C Charger](https://amzn.to/44m7HGG)
+  - **Note:** any USB charger will do!
+  You can even use a charger with USB-A ports with a USB-A to C cable (not listed).
+- A **USB-C charging cable** for the filtered pre-amp:
+  - 3 ft. (91 cm): [Anker Powerline III USB-C to USB-C charging cable, 3 ft. - affiliate link](https://amzn.to/3xYWm3h)
+  - 6 ft. (1.83 m): [Anker Powerline III USB-C to USB-C charging cable, 6 ft. - affiliate link](https://amzn.to/3WntEDb)
+  - 10 ft. (3.05 m): [Anker Powerline III USB-C to USB-C charging cable, 10 ft. - affiliate link](https://amzn.to/3JGNUZ1)
+  - **Note:** choose the shortest cable length that works for your application!
+  - **Note 2:** any USB-C to USB-C cable will do; or, if you're using a USB-A charger, use a USB-A to USB-C cable
+- A premium **antenna** suitable for indoor usage, like this small magnetic-base one from DPD Productions: [ADS-B double 1/2 wave mobile antenna](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/ads-b-double-1-2-wave-mobile-antenna)
+  - **Note:** DPD Productions also sells an "indoor antenna" - however, the authors have had better indoor performance with the mobile antenna.
+  Plus, the mobile antenna is less expensive!
 
-- Band-pass signal filter: [FlightAware 1090 MHz band-pass filter](https://flightaware.store/products/band-pass-signal-filter-1090-only-mhz)
-- SMA male to SMA male RG316 jumper cable [6 in./15 cm SMA male to SMA male RG316 jumper cable - affiliate link](https://amzn.to/3JHK5Th)
-  - **Note:** RG316 is not the best quality cable, but it is inexpensive!
-  For a higher quality (but much more expensive option), check out: [6 in./15 cm SMA male to SMA male LMR-240, "ultra flexible" cable](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-lmr-240-uf-coax-fmc0202245-06-p.aspx)
+
+
 
 ## Required Hardware Accessories/Tools
 
@@ -171,8 +198,7 @@ Fill in details
 
 In addition to the core bill of materials, you will need some additional hardware to support your RetroPie build.
 
-
-  - If you are building a RetroPie system and planning to use the microSD card for storage (as opposed to a SATA or NVMe SSD), you are going to want a larger card.
+- If you are building a RetroPie system and planning to use the microSD card for storage (as opposed to a SATA or NVMe SSD), you are going to want a larger card.
 In this case, I recommend this SanDisk Ultra 1.5TB one: [SanDisk Ultra 1.5TB microSDXC UHS-I card with A1 Performance Rating - Affiliate Link](https://amzn.to/41JNZmH).
 Or, for a slightly faster microSD card, get one with an A2 performance rating and slightly less capacity like this Lexar 1TB one: [Lexar PLAY 1TB microSDXC UHS-I card with A2 Performance Rating - Affiliate Link](https://amzn.to/3vqAqwo).
 - Likewise, **a microSD card reader** is required. I recommend a USB 3.0 / USB 3.1 Gen 1 / USB 3.2 Gen 1x1 (or better) microSD reader like this inexpensive one from SanDisk: [SanDisk MobileMate USB 3.0 microSD Card Reader - Affiliate Link](https://amzn.to/48i3Ew3).
