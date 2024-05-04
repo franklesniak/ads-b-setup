@@ -6,6 +6,12 @@ Step-by-step instructions for setting up a "passive aircraft radar" that receive
 
 This guide covers the following hardware-software combinations:
 
+### Supported ADS-B/Aircraft Tracking Standards
+
+This guide focuses on Mode S-ES-based ADS-B transmissions, which are transmitted at 1090 MHz.
+Accordingly, the bill of materials and instructions assume the reader is building an ADS-B receiver that is solely focused on receipt of that frequency.
+If you are building a US-based receiver that should receive 978 MHz UAT, then you will need to deviate from the bill of materials and instructions below accordingly.
+
 ### Supported Computers
 
 The following computers are supported by this guide:
@@ -163,12 +169,12 @@ For more information on this concept, check out: [Grounding and Bonding for the 
 - **Grounding** connection: while the specifics of this are out of scope for this guide, you must ensure that the system is bonded to a suitable ground for lightning protection.
 The National Electrical Code standard 810 covers commonly accepted requirements for the grounding and bonding of antenna systems.
 For more information on this concept, check out: [Grounding and Bonding for the Radio Amateur - affiliate link](https://amzn.to/3JJkWI0).
-This guide does not specify equipment for bonding or surge-arresting.
+As you read the rest of the bill of materials below, keep in mind that this markdown page does not specify equipment for bonding or surge-arresting.
 - **Power supply** for micro USB Raspberry Pis: [CanaKit 5V 2.5A Raspberry Pi power supply - affiliate link](https://amzn.to/3UC7fkd)
   - **Note:** it may be desirable to consider a solar system to power the Raspberry Pi and antenna system.
   While the antenna would still need to be bonded to a suitable ground, electrically isolating the antenna system with an "off-grid" solar array and using a Wi-Fi connection for the Raspberry Pi provides a literal "air gap" between the antenna system and your electrical system and network, which gives you additional protection from a lightning strike.
   The design specifics of an off-grid solar system are outside the scope of this document, but the project [OffGridSolarPS](https://github.com/franklesniak/OffGridSolarPS) might help you plan the requirements for such a system.
-  Based on the m
+  Based on the authors' direct observations, the specified Raspberry Pi setup with a single software-defined radio (i.e., only receiving 1090 MHz) uses about 2.4 watts of power at steady state.
 - **Software-defined radio** without an included bandpass filter: [FlightAware Pro Stick](https://flightaware.store/products/pro-stick)
 - **Band-pass signal filter**: [FlightAware 1090 MHz band-pass filter](https://flightaware.store/products/band-pass-signal-filter-1090-only-mhz)
 - SMA male to SMA male LMR-240 jumper cable [6 in./15 cm SMA male to SMA male LMR-240, "ultra-flexible" cable](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-lmr-240-uf-coax-fmc0202245-06-p.aspx)
