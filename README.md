@@ -497,3 +497,30 @@ Do this by running the following two commands at the terminal prompt:
     sleep 2
     sudo apt -y install piaware
     ```
+
+### Configure PiAware to Update Automatically and Allow Manual Updates, Too
+
+At the terminal, run the following commands:
+
+```bash
+sudo piaware-config allow-auto-updates yes
+sudo piaware-config allow-manual-updates yes
+```
+
+### Install dump1090 and/or dump978
+
+1. At the terminal, run the following command:
+
+    `sudo apt -y install dump1090-fa`
+
+1. If you intend to use a dual software-defined radio setup to also receive 978 MHz, install dump978 by running the following command:
+
+    `sudo apt install dump978-fa`
+
+    **Note:** if you are not located in the United States, or if do not intend to support 978 MHz UAT, skip this step.
+
+1. Shut down the Raspberry Pi by running the following command:
+
+    `sudo shutdown now`
+
+    Wait approximately one minute for the shutdown to complete, then remove the power from the Raspberry Pi.
