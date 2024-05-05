@@ -212,8 +212,9 @@ Here are some options:
     - USB A and C microSD card reader (supports both!): [Anker SD and microSD Card Reader, USB-A and USB-C Connectors - affiliate link](https://amzn.to/3H40SyD)
 - A **USB keyboard** may be needed if you can't determine your Raspberry Pi's IP address or cannot connect to it.
 If you need to purchase one, it's nothing fancy, but we like this simple, compact, all-in-one unit from Logitech: [Logitech K400 Plus Wireless Keyboard with Touchpad Mouse](https://www.amazon.com/Logitech-Wireless-Keyboard-Touchpad-PC-connected/dp/B014EUQOGK)
-- A **precision, slotted screwdriver** is required for the assembly of the Pimoroni Pibow case.
+- You may want a **precision, slotted screwdriver** for the assembly of the Pimoroni Pibow case.
 We like this electrostatic discharge-resistant one from Wiha: [Wiha 27224 Slotted Screwdriver with Precision ESD Safe Dissipative Handle, 2.0 x 150mm - affiliate link](https://amzn.to/44r49mk).
+However, you may be able to use your finger nail to hold the nylon bolt and hand-tighten its nut.
 - Additionally, if you are building a portable ADS-B receiver (e.g., for in-vehicle, camping, or other travel usage), you will need a **precision Phillips screwdriver** to attach the GPS HAT to the Raspberry Pi/Pibow case using the nylon nuts and bolts.
 If you can find it, we like this electrostatic discharge-resistant one from Wiha: [Wiha 27324 Phillips Screwdriver with Precision ESD Safe Dissipative Handle, 1 x 100mm](https://amzn.to/3UJPzDn)
 - You may need a **mini HDMI (male) to full-size HDMI (female) adapter** if you have a problem connecting to the Raspberry Pi over the network: [Cable Matters 2-Pack Mini HDMI to HDMI Adapter (HDMI to Mini HDMI Adapter) 6 Inches with 4K and HDR Support for Raspberry Pi Zero and More (2 pack) - affiliate link](https://amzn.to/3wlDlr5)
@@ -252,10 +253,123 @@ It allows us to copy-paste commands to expedite the setup process and make it le
 
     **Note**: you can use a different SSH client if you prefer
 
-1. Download and install the latest version of **Notepad++**.
-This software is used to create or edit configuration files, while more easily keeping with the Unix file format.
+## Prepare the Raspberry Pi Before Loading FlightAware's Software
 
-    Link: [Notepad++](https://notepad-plus-plus.org/download/)
+### Solder a GPIO header onto the Raspberry Pi
 
-    **Note**: you should download the `Installer` that matches your processor architecture.
-    For most people, this will be the `64-bit x64` download.
+If you are building a portable ADS-B receiver (e.g., for in-vehicle, camping, or other travel usage), and if your Raspberry Pi did not come with a GPIO header installed, please solder a GPIO header on the Raspberry Pi.
+
+The GPIO is a 20 x 2 pin array along the long side of the Raspberry Pi.
+
+**Note:** you can skip this step if you are not building a portable ADS-B receiver.
+
+### Prepare the microSD Card with a Raspberry Pi OS Lite Image
+
+1. On the technician's computer, start Raspberry Pi Imager and prepare to write the image to the microSD card:
+    - Insert your microSD card into the technician's computer's microSD card reader and open Raspberry Pi Imager.
+    - In Raspberry Pi Imager, select `Choose Device`, then choose `Raspberry Pi Zero 2 W`.
+    - Select `Choose OS`, select `Raspberry Pi OS (other)`, then choose `Raspberry Pi OS Lite (32-bit)`.
+    - Select `Choose Storage`, then choose the attached microSD card.
+    - Click `Next`.
+1. Apply operating system customizations:
+    - When asked, `Would you like to apply OS customisation settings?`, choose `Edit Settings`.
+    - Check the checkbox for `Set hostname`.
+    Change the `raspberrypi` to another name, e.g., `adsbreceiver`.
+    - Check the checkbox for `Set username and password`.
+      - The default username is `pi` by convention; the authors recommend using `pi`.
+      However, you may use something different if you wish.
+      - Enter a strong password that you will remember
+    - Check the checkbox for `Configure wireless LAN`.
+    Then, enter the SSID (network name) and password for the wireless network.
+    For `Wireless LAN country`, backspace `GB` and type the two-letter ISO country code for the country where the Raspberry Pi will be used.
+    For the United States, type `US`.
+    - Check the checkbox for `Set locale settings`.
+    Select the dropdown for `Time zone` and choose the best time zone for your location (if it isn't already).
+    Select the dropdown for `Keyboard layout` and choose the best keyboard layout.
+    For US usage, the keyboard layout should be `us`.
+    - Click the `Services` tab at the top.
+    - Check the checkbox for `Enable SSH` and leave `Use password authentication` selected.
+    - Click `Save`
+    - Back on the `Would you like to apply OS customisation settings?`, choose `Yes`.
+1. Start writing the image to the microSD card:
+    - Select `Yes` to confirm that all data on the microSD card will be erased.
+    - Wait for the process to complete.
+    - When it completes and the `Write Successful` dialog appears, click `Continue`.
+    - Close Raspberry Pi Imager when done.
+
+### Assemble the Raspberry Pi Into Its Case
+
+1. Remove the microSD card from the microSD card reader and insert it into the Raspberry Pi.
+1. Remove the Pimoroni Pibow from its paper bag.
+1. Each piece of acrylic that comprises the Pimoroni Pibow case will have a plastic wrapping attached to it.
+Peel the plastic wrapping away from each piece and discard it.
+1. Three of the acrylic pieces will be numbered: 0, 1, and 2.
+Starting with piece 0, stack piece 1 on top such that the 1 is right over the 0.
+The numbers should be in the upper left.
+1. Place the thinner piece of clear acrylic in the middle of piece 1 such that it is laying on top of piece 0.
+The long rectangular cut-away should be at the top, and the lower right should have two smaller rectangles.
+1. Place the Raspberry Pi Zero 2 W on top of the thin piece of clear acrylic such that it fits into the center of piece 1.
+The top edge of the Raspberry Pi Zero 2 W should be even with the top edge of piece 1
+1. Place piece 2 on top of piece 1 such that the 2 is on top of the 1.
+1. Place the thicker, clear piece of acrylic over piece 2 such that the white USB and power symbols are over the micro USB ports in the lower right.
+1. Insert the nylon bolts into the outermost four corners of the Pibow.
+1. Carefully flip the Pibow over.
+Thread the nuts onto each bolt and hand-tighten them.
+
+### Determine the Current List of IP Addresses
+
+1. Ensure that the technician's computer is connected to the same wireless network that the Raspberry Pi will be.
+1. Start PowerShell, then run the following commands:
+
+```powershell
+Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/proxb/AsyncFunctions/master/Test-ConnectionAsync.ps1')
+$results1 = Ping-Subnet
+```
+
+Keep PowerShell open while you complete the following steps.
+
+### Power On the Raspberry Pi
+
+1. Connect a power cable to the Raspberry Pi.
+After a few moments, it will power on. The Raspberry Pi will take a few minutes to complete its initialization process.
+
+### Connect to the Raspberry Pi Using SSH
+
+1. If you haven't already waited a few minutes, please do!
+The Raspberry Pi will take at least three minutes to boot up and connect to the wireless network - maybe more!
+1. Once you believe the Raspberry Pi is connected, try pinging it using its hostname.
+For example, try: `ping adsbreceiver.local` and see if you get a response.
+    - If you get a `Ping request could not find host <hostname>. Please check the name and try again.`, then the Raspberry Pi is not yet booted up - or it failed to connect to the network.
+    Wait a bit and try again!
+1. If you have **not** successfully pinged the Raspberry Pi using its name after waiting 5-10 minutes, try running the following PowerShell command on the technician's computer: `$results2 = Ping-Subnet`
+    - Compare `$results1` and `$results2` to find the new IP address that appeared in `$results2`.
+The new IP address should be the Raspberry Pi. To display, for example, `$results2`, simply type `$results2` in PowerShell.
+1. At the PowerShell prompt or a Command Prompt, type:
+
+    `ssh -l pi adsbreceiver.local`
+
+    where `pi` is the user name that you entered during the customization process and `adsbreceiver.local` is the hostname of the Raspberry Pi or its IP address.
+1. You should receive a warning message that the authenticity of the host can't be established.
+Type `yes` and press Enter.
+1. Enter the password that you assigned during the customization process.
+
+You should now be connected to the Raspberry Pi via a terminal window!
+
+### Update the Raspberry Pi, Including its Firmware
+
+**Note**: these steps assume that you are installing the latest stable firmware release (recommended).
+If, for some reason, you need to install a beta firmware instead of the latest stable release, check out [the rpi-update project](https://github.com/raspberrypi/rpi-update).
+
+1. At the terminal prompt, type the following commands:
+
+    ```bash
+    sudo apt update
+    sleep 2
+    sudo apt -y full-upgrade
+    ```
+
+    The update may take a long time to complete.
+
+1. When the process completes, type the following command:
+
+    `sudo reboot now`
