@@ -726,6 +726,8 @@ If you already have an account, then sign in.
 
 ### Claim the ADS-B Receiver for Your Account
 
+If it hasn't already been a couple of minutes since the Raspberry Pi rebooted, wait a couple of minute to let the process complete.
+
 While on the same network as the Raspberry Pi ADS-B receiver, visit [FlightAware's claim page](https://www.flightaware.com/adsb/piaware/claim) to complete the process of associating the Raspberry Pi with your account.
 
 It's that easy!
