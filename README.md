@@ -547,3 +547,23 @@ Please refer to the Ozzmaker documentation for a more complete set of instructio
 1. On the uFL to SMA "pigtail" that came with the GPS antenna, connect the uFL end (small connector) to the GPS HAT.
 1. Flip the switch from `Int` to `Ext`.
 1. Connect the GPS antenna to the SMA connector on the "pigtail".
+
+## Connect the Software-Defined Radio, Antenna, and Related Equipment
+
+The steps in this section depend on the "option" that you selected in the Bill of Materials section, above.
+
+### Connect Option 1: Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
+
+Foo
+
+### Connect Option 2: Indoor ADS-B Receiver
+
+Foo
+
+### Connect Option 3: Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
+
+Foo
+
+### Connect Option 4: Permanent Outdoor Setup
+
+Foo
