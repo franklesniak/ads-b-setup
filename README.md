@@ -177,26 +177,27 @@ As you read the rest of the bill of materials below, keep in mind that this mark
   Based on the authors' direct observations, the specified Raspberry Pi setup with a single software-defined radio (i.e., only receiving 1090 MHz) uses about 2.4 watts of power at steady state.
 - **Software-defined radio** without an included bandpass filter: [FlightAware Pro Stick](https://flightaware.store/products/pro-stick)
 - **Band-pass signal filter**: [FlightAware 1090 MHz band-pass filter](https://flightaware.store/products/band-pass-signal-filter-1090-only-mhz)
-- SMA male to SMA male LMR-240 jumper cable [6 in./15 cm SMA male to SMA male LMR-240, "ultra-flexible" cable](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-lmr-240-uf-coax-fmc0202245-06-p.aspx)
+- **SMA male to SMA male coupler**, to connect the band-pass signal filter to the bias tee [SMA male to SMA male adapter, 2 pack - affiliate link](https://amzn.to/4dtF9is)
+  - **Note:** if you would rather have a more flexible setup (compared to the linear, rigid coupling of the above modules), you may substitute the following cable: **SMA male to SMA male LMR-240 jumper cable** [6 in./15 cm SMA male to SMA male LMR-240, "ultra-flexible" cable](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-lmr-240-uf-coax-fmc0202245-06-p.aspx)
+- **Bias tee** to supply power to the filtered pre-amp: [USB bias tee](https://gpio.com/collections/bias-tees/products/usb-bias-tee-operates-from-10mhz-7000mhz)
+  - **Note:** The bias tee supplies power to the filtered pre-amp because the filtered pre-amp should be placed as close to the antenna as possible, whereas it is assumed that the Raspberry Pi device is further away.
+  For example, the Raspberry Pi may be near the ground, and the antenna may be mounted on a rooftop antenna mast.
+  In this example, it may be desirable to address power needs at the ground level rather than running power to the roof line - this is what the bias tee allows us to do.
+- **microSD power supply** the bias tee: [CanaKit 5V 2.5A Raspberry Pi power supply - affiliate link](https://amzn.to/3UC7fkd)
+  **Note:** you may use another micro USB power supply if you have one!
+- **Weather/dust-proof enclosure** to encase the above equipment (not specified)
+- **SMA male to SMA male** LMR-400 cable, to run from the enclosure up to the antenna area:
+  - 4 ft. (1.22 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 48 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-sma-male-sma-male-cable-lmr400-coax-fmc0202400lf-48-p.aspx)
+  - 5 ft (1.52 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 60 Inch with Times Microwave Connectors](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-times-lmr-400-coax-fmc0202400-60-p.aspx)
+  - 6 ft (1.83 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 72 Inch with Times Microwave Connectors](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-times-lmr-400-coax-fmc0202400-72-p.aspx)
+  - 10 ft (3.05 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 120 Inch with Times Microwave Connectors](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-times-lmr-400-coax-fmc0202400-120-p.aspx)
+  - **Note**: If you need more than 10 ft. (3.05 m) of cable, you may need to contact Fairview Microwave for a custom order.
+  - **Note 2:** the first link above (4 ft./1.22 m) is a RoHS-compliant product; if you want/desire a RoHS-compliant product but need a longer length than 4 ft./1.22 m, you may want to contact Fairview Microwave to place a custom order.
 - **1090 MHz filtered pre-amp**: [Uputronics 1090 MHz ADS-B filtered preamp](https://store.uputronics.com/index.php?route=product/product&path=59&product_id=50)
-  - **Note:** if you are mounting the equipment into a box, you may want to purchase the filtered preamp with the lug kit included.
-  Lugs are easy to remove later if needed.
-  - **Note 2:** the filtered pre-amp will be connected directly to the software-defined radio, so be sure to purchase it with an SMA coupler (male to male)
-- If you don't already have one, a **USB-C power supply** for the filtered pre-amp: [Anker 511 (Nano Pro) USB-C Charger](https://amzn.to/44m7HGG)
-  - **Note:** any USB charger will do!
-  You can even use a charger with USB-A ports with a USB-A to C cable (not listed).
-- A **USB-C charging cable** for the filtered pre-amp:
-  - 3 ft. (91 cm): [Anker Powerline III USB-C to USB-C charging cable, 3 ft. - affiliate link](https://amzn.to/3xYWm3h)
-  - 6 ft. (1.83 m): [Anker Powerline III USB-C to USB-C charging cable, 6 ft. - affiliate link](https://amzn.to/3WntEDb)
-  - 10 ft. (3.05 m): [Anker Powerline III USB-C to USB-C charging cable, 10 ft. - affiliate link](https://amzn.to/3JGNUZ1)
-  - **Note:** choose the shortest cable length that works for your application!
-  - **Note 2:** any USB-C to USB-C cable will do; or, if you're using a USB-A charger, use a USB-A to USB-C cable
-- A premium **antenna** suitable for indoor usage, like this small magnetic-base one from DPD Productions: [ADS-B double 1/2 wave mobile antenna](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/ads-b-double-1-2-wave-mobile-antenna)
-  - **Note:** DPD Productions also sells an "indoor antenna" - however, the authors have had better indoor performance with the mobile antenna.
-  Plus, the mobile antenna is less expensive!
-
-
-
+  - **Note:** Purchase the filtered preamp with the lug kit included.
+  Lugs may make the device easier to mount in an enclosure, and are easy enough to remove later if needed.
+- A **SMA male to N male** jumper cable, to connect the filtered pre-amp to the antenna: [Low Loss N Male to SMA Male Cable LMR-400 Coax in 12 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-n-male-sma-male-cable-lmr400-coax-fmc0102400lf-12-p.aspx)
+- A premium **antenna** suitable for outdoor usage, like this large vertically-mounted one from DPD Productions: [ADS-B Vertical Outdoor Base Antenna (Standard 1090 MHz ES)](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/ads-b-vertical-outdoor-base-antenna)
 
 ## Required Hardware Accessories/Tools
 
