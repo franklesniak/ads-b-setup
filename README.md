@@ -554,7 +554,13 @@ The steps in this section depend on the "option" that you selected in the Bill o
 
 ### Connect Option 1: Simplest Setup - Stationary, Only Outdoor As-Needed, Proof of Concept
 
-Foo
+1. Connect the Raspberry Pi to the software-defined radio:
+    - Connect the micro USB end of the **"OTG" adapter cable** (micro USB (male) to USB (female)) to the USB port on the Raspberry Pi Zero 2 W.
+    - Connect the **software-defined radio** to the full-size USB port.
+1. Connect the antenna to the software-defined radio:
+    - Connect the SMA end of the **N (male) to SMA (male)** to the software-defined radio.
+    - Connect the antenna to the N connector on the cable.
+1. Connect the power to the Raspberry Pi to boot it up.
 
 ### Connect Option 2: Indoor ADS-B Receiver
 
