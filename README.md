@@ -715,3 +715,17 @@ Finally, press `Ctrl` + `X` to exit.
 1. Reboot the Raspberry Pi by typing the following in the terminal prompt:
 
     `sudo reboot now`
+
+## Claim the PiAware on FlightAware's Website
+
+### Create a FlightAware Account
+
+If you haven't already, start the process by going to [flightaware.com](https://flightaware.com) and creating a new account.
+
+If you already have an account, then sign in.
+
+### Claim the ADS-B Receiver for Your Account
+
+While on the same network as the Raspberry Pi ADS-B receiver, visit [FlightAware's claim page](https://www.flightaware.com/adsb/piaware/claim) to complete the process of associating the Raspberry Pi with your account.
+
+It's that easy!
