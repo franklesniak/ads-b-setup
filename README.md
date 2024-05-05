@@ -355,6 +355,83 @@ Type `yes` and press Enter.
 
 You should now be connected to the Raspberry Pi via a terminal window!
 
+### Enable Automatic Operating System Updates
+
+1. At the terminal prompt, type the following commands:
+
+    ```bash
+    sudo apt update
+    sleep 2
+    sudo apt -y install unattended-upgrades
+    ```
+
+    The update may take a few minutes to complete.
+1. At the terminal prompt, type:
+
+    `sudo dpkg-reconfigure -plow unattended-upgrades`
+
+1. When asked if you want to `Automatically download and install stable updates?`, use the arrow key to highlight `Yes`, then press `Enter`.
+1. If you receive a message that a new version of the 50unattended-upgrades file is available, use the keyboard's arrow keys to highlight the option to install the package maintainer's version, then press `Enter`.
+1. At the terminal prompt, type:
+
+    `sudo editor /etc/apt/apt.conf.d/50unattended-upgrades`
+
+1. Use the arrow keys to navigate downward to the section `Unattended-Upgrade::Origins-Pattern`
+1. If it exists, comment out the line:
+
+    `"origin=Debian,codename=${distro_codename},label=Debian";`
+
+    by inserting `//` in front of it.
+
+1. Next, if it exists, comment out the line:
+
+    `"origin=Debian,codename=${distro_codename},label=Debian-Security";`
+
+    by inserting `//` in front of it.
+1. As needed, add the following lines above the line with the closing brace (`};`):
+
+    ```text
+    "origin=Raspbian,codename=${distro_codename},label=Raspbian";
+    "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+    ```
+
+1. Next, use the arrow keys to scroll down to find the line that contains
+`Unattended-Upgrade:Automatic-Reboot`.
+Modify it to remove the `//`, which uncomments the line.
+Change the `false` to a `true`.
+The line should now read:
+
+    `Unattended-Upgrade:Automatic-Reboot "true";`
+
+1. Finally, use the arrow keys to scroll down to find the line that contains
+`Unattended-Upgrade::Automatic-Reboot-Time`.
+Modify it to remove the `//`, which uncomments the line.
+If desired, change the time to something other than 2:00 AM.
+For example, to reboot at 4:00 AM, modify the line to look like:
+
+    `Unattended-Upgrade::Automatic-Reboot-Time "04:00";`
+
+1. Press `Ctrl` + `O` to save the file.
+Press `Enter` to confirm the file name.
+Finally, press `Ctrl` + `X` to exit.
+
+### Run an Initial Check for Updates and Verify That It's Working
+
+1. At the terminal prompt, type:
+
+    ```bash
+    sudo apt-get update
+    sleep 2
+    sudo unattended-upgrade --dry-run
+    ```
+
+    The command will take several minutes to complete.
+1. Finally, type:
+
+    `cat /var/log/unattended-upgrades/unattended-upgrades.log`
+
+    And review the log output to ensure that packages are listed for update/upgrade
+
 ### Update the Raspberry Pi, Including its Firmware
 
 **Note**: these steps assume that you are installing the latest stable firmware release (recommended).
@@ -373,3 +450,34 @@ If, for some reason, you need to install a beta firmware instead of the latest s
 1. When the process completes, type the following command:
 
     `sudo reboot now`
+
+### Reconnect to the Raspberry Pi Using SSH
+
+1. Wait a few minutes for the Raspberry Pi to reboot.
+1. At the PowerShell prompt or a Command Prompt, type:
+
+    `ssh -l pi adsbreceiver.local`
+
+    where `pi` is the user name that you entered during the customization process and `adsbreceiver.local` is the hostname of the Raspberry Pi or its IP address.
+1. Enter the password that you assigned during the customization process.
+
+## Install and Configure the FlightAware Software
+
+### Install PiAware
+
+1. Download and install the FlightAware APT repository package, which tells apt (Raspberry Pi OS's package manager) how to find FlightAware's software packages in addition to the packages provided by Raspberry Pi OS/Debian.
+Do this by running the following two commands at the terminal prompt:
+
+    ```bash
+    wget https://www.flightaware.com/adsb/piaware/files/packages/pool/piaware/f/flightaware-apt-repository/flightaware-apt-repository_1.2_all.deb
+
+    sudo dpkg -i flightaware-apt-repository_1.2_all.deb
+    ```
+
+1. Install PiAware by running the following commands at the terminal prompt:
+
+    ```bash
+    sudo apt update
+    sleep 2
+    sudo apt -y install piaware
+    ```
