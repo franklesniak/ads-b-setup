@@ -226,3 +226,36 @@ If you need one, we recommend one of the following:
 - If you have a problem connecting to the Raspberry Pi over the network, you're going to need **a TV or computer monitor** that supports an HDMI connection.
 I hope that you already have one of these!
 But, if you need a recommendation for a TV, you can't go wrong with an 83-inch LG C4 OLED: [LG C4 Series 83-Inch OLED TV - affiliate link](https://amzn.to/4bGStyz) - **be sure to purchase one shipped and sold by Amazon**.
+
+## Prepare the "Technician's Computer"
+
+Before beginning the ADS-B receiver setup process, you will need to download and install some software.
+
+### Download and Install Required Software
+
+1. Download and install **Raspberry Pi Imager**.
+This software is used to write the Raspberry Pi OS image to a microSD card.
+
+    Link: [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+
+1. Confirm your system has **OpenSSH** installed.
+If it doesn't, install it. This software is used to remote into the Raspberry Pi system once it is online.
+It allows us to copy-paste commands to expedite the setup process and make it less error-prone.
+    - On the newest versions of Windows, OpenSSH is installed by default.
+    - To confirm it's installed, open `Settings` > `System` > `Optional features`
+        - If you can't find `Optional Features` under settings: try opening `Settings` > `Apps` > `Optional Features`.
+        - Once you are in `Optional Features`, review the list of installed optional features and see if `OpenSSH Client` is installed.
+    - If it isn't installed:
+        - At the top, next to `Add an optional feature`, click `View features`.
+        - Check the checkbox for `OpenSSH Client`. Click `Next`.
+        - Continue with the installation.
+
+    **Note**: you can use a different SSH client if you prefer
+
+1. Download and install the latest version of **Notepad++**.
+This software is used to create or edit configuration files, while more easily keeping with the Unix file format.
+
+    Link: [Notepad++](https://notepad-plus-plus.org/download/)
+
+    **Note**: you should download the `Installer` that matches your processor architecture.
+    For most people, this will be the `64-bit x64` download.
