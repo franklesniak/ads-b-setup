@@ -524,3 +524,26 @@ sudo piaware-config allow-manual-updates yes
     `sudo shutdown now`
 
     Wait approximately one minute for the shutdown to complete, then remove the power from the Raspberry Pi.
+
+## For Portable ADS-B Receiver Setups: Add the GPS HAT
+
+**Note:** the steps in this section only apply to people building a portable ADS-B receiver (e.g., for in-vehicle, camping, or other travel usage). If you are not building a portable receiver, skip this section!
+
+### Install the GPS HAT
+
+The following are the "rough" steps to physically assemble the Ozzmaker BerryGPS HAT.
+Please refer to the Ozzmaker documentation for a more complete set of instructions.
+
+1. Solder the 10-pin GPIO header to the bottom of the BerryGPS board.
+1. Insert the 25mm nylon screws (purchased separately from the BerryGPS as noted in the bill of materials) into the top of the BerryGPS HAT.
+1. Carefully flip the BerryGPS HAT upside-down, laying it on top of a static-proof bag/mat.
+1. Carefully insert exactly nine nylon washers onto each bolt.
+1. Carefully install the BerryGPS HAT onto the Raspberry Pi Zero 2 W, ensuring that the HAT's GPIO header inserts itself correctly onto the ten left-most pins of the GPIO header on the Raspberry Pi.
+1. Once done, carefully thread the nylon nuts onto the bolts.
+1. Use a precision Phillips screwdriver to tighten the nylon bolts onto the nuts, being careful not to overtighten them.
+
+### Connect the GPS Antenna
+
+1. On the uFL to SMA "pigtail" that came with the GPS antenna, connect the uFL end (small connector) to the GPS HAT.
+1. Flip the switch from `Int` to `Ext`.
+1. Connect the GPS antenna to the SMA connector on the "pigtail".
