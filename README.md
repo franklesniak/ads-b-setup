@@ -195,7 +195,8 @@ As you read the rest of the bill of materials below, keep in mind that this mark
   - **Note 2:** the first link above (4 ft./1.22 m) is a RoHS-compliant product; if you want/desire a RoHS-compliant product but need a longer length than 4 ft./1.22 m, you may want to contact Fairview Microwave to place a custom order.
 - **1090 MHz filtered pre-amp**: [Uputronics 1090 MHz ADS-B filtered preamp](https://store.uputronics.com/index.php?route=product/product&path=59&product_id=50)
   - **Note:** Purchase the filtered preamp with the lug kit included.
-  Lugs may make the device easier to mount in an enclosure, and are easy enough to remove later if needed.
+  Lugs may make the device easier to mount in an enclosure and are easy enough to remove later if needed.
+- Another **weather/dust-proof enclosure** to encase the pre-amp and the antenna connections on it (not specified)
 - A **SMA male to N male** jumper cable, to connect the filtered pre-amp to the antenna: [Low Loss N Male to SMA Male Cable LMR-400 Coax in 12 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-n-male-sma-male-cable-lmr400-coax-fmc0102400lf-12-p.aspx)
 - A premium **antenna** suitable for outdoor usage, like this large vertically-mounted one from DPD Productions: [ADS-B Vertical Outdoor Base Antenna (Standard 1090 MHz ES)](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/ads-b-vertical-outdoor-base-antenna)
 
