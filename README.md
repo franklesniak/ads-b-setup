@@ -561,6 +561,7 @@ The steps in this section depend on the "option" that you selected in the Bill o
     - Connect the SMA end of the **N (male) to SMA (male)** to the software-defined radio.
     - Connect the antenna to the N connector on the cable.
 1. Connect the power to the Raspberry Pi to boot it up.
+Wait a couple of minutes for it to start.
 
 ### Connect Option 2: Indoor ADS-B Receiver
 
@@ -577,6 +578,7 @@ The steps in this section depend on the "option" that you selected in the Bill o
     - Assemble the antenna by screwing the antenna into its magnetic base
     - Connect the antenna to the `ANT` port on the filtered pre-amp
 1. Connect the power to the Raspberry Pi to boot it up.
+Wait a couple of minutes for it to start.
 
 ### Connect Option 3: Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
 
@@ -596,6 +598,7 @@ The steps in this section depend on the "option" that you selected in the Bill o
     - Assemble the antenna by screwing the antenna into its magnetic base
     - Connect the antenna to the `ANT` port on the filtered pre-amp
 1. Connect the **micro-USB cable** to the Raspberry Pi and the other end to the power bank to boot up the Raspberry Pi.
+Wait a couple of minutes for it to start.
 
 ### Connect Option 4: Permanent Outdoor Setup
 
@@ -620,3 +623,95 @@ For more information on this concept, check out: [Grounding and Bonding for the 
 1. Attach the SMA end of the **SMA male to N male jumper cable** to the `ANT` end of the filtered pre-amp.
 1. Attach the N connector to the antenna.
 1. Connect the power to the Raspberry Pi to boot it up.
+Wait a couple of minutes for it to start.
+
+## For Portable ADS-B Receiver Setups: Complete the GPS Setup
+
+### Adjust the Serial Port Configuration
+
+1. Reconnect to the Raspberry Pi Using SSH
+    - Wait a few minutes for the Raspberry Pi to reboot.
+    - At the PowerShell prompt or a Command Prompt, type:
+
+      `ssh -l pi adsbreceiver.local`
+
+      where `pi` is the user name that you entered during the customization process and `adsbreceiver.local` is the hostname of the Raspberry Pi or its IP address.
+    - Enter the password that you assigned during the customization process.
+1. At the terminal prompt, run the following command:
+
+    `sudo raspi-config`
+
+1. In raspi-config, use the arrow keys to select `Interface options`.
+Press `Enter`.
+1. Use the arrow keys to select `Serial Port`.
+Press `Enter`.
+1. When asked `Would you like a login shell to be accessible over serial?`, use the arrow keys to select `No`, then press `Enter`.
+1. When asked `Would you like the serial port hardware to be enabled?`, use the arrow keys to select `Yes`, then press `Enter`.
+1. Press `Enter` to confirm.
+1. Use the arrow keys to select `Finish`, then press `Enter`.
+1. When asked `Would you like to reboot now?`, use the arrow keys to select `Yes`, then press `Enter`.
+1. Wait a couple minutes for the Raspberry Pi to reboot.
+
+### Install gpsd
+
+1. Reconnect to the Raspberry Pi Using SSH
+    - Wait a few minutes for the Raspberry Pi to reboot.
+    - At the PowerShell prompt or a Command Prompt, type:
+
+      `ssh -l pi adsbreceiver.local`
+
+      where `pi` is the user name that you entered during the customization process and `adsbreceiver.local` is the hostname of the Raspberry Pi or its IP address.
+    - Enter the password that you assigned during the customization process.
+1. At the terminal prompt, run the following command:
+
+    `sudo apt -y install gpsd-clients gpsd`
+
+    This command will take a very long time to complete.
+
+### Configure gpsd
+
+1. At the terminal prompt, run the following command:
+
+    `sudo editor /etc/default/gpsd`
+
+1. Use the arrow keys to navigate to the line that reads:
+
+    `DEVICES=""`
+
+    Change this line to read:
+
+    `DEVICES="/dev/serial0"`
+
+1. Use the arrow keys to navigate to the line that reads:
+
+    `GPSD_OPTIONS=""`
+
+    Change this line to read:
+
+    `GPSD_OPTIONS="b"`
+
+1. Press `Ctrl` + `O` to save the file.
+Press `Enter` to confirm the file name.
+Finally, press `Ctrl` + `X` to exit.
+1. Reboot the Raspberry Pi by typing the following in the terminal prompt:
+
+    `sudo reboot now`
+
+1. Wait a couple of minutes for the Raspberry Pi to complete its reboot.
+
+### Configure PiAware to Use GPS
+
+1. Reconnect to the Raspberry Pi Using SSH
+    - At the PowerShell prompt or a Command Prompt, type:
+
+      `ssh -l pi adsbreceiver.local`
+
+      where `pi` is the user name that you entered during the customization process and `adsbreceiver.local` is the hostname of the Raspberry Pi or its IP address.
+    - Enter the password that you assigned during the customization process.
+1. At the terminal prompt, run the following command:
+
+    `sudo piaware-config use-gpsd yes`
+
+1. Reboot the Raspberry Pi by typing the following in the terminal prompt:
+
+    `sudo reboot now`
