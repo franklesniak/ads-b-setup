@@ -403,13 +403,29 @@ The line should now read:
 
     `Unattended-Upgrade:Automatic-Reboot "true";`
 
-1. Finally, use the arrow keys to scroll down to find the line that contains
+1. Use the arrow keys to scroll down to find the line that contains
+`Unattended-Upgrade:Automatic-Reboot-WithUsers`.
+Modify it to remove the `//`, which uncomments the line.
+Ensure that the setting is configured to `true`.
+The line should now read:
+
+    `Unattended-Upgrade::Automatic-Reboot-WithUsers "true";`
+
+1. Use the arrow keys to scroll down to find the line that contains
 `Unattended-Upgrade::Automatic-Reboot-Time`.
 Modify it to remove the `//`, which uncomments the line.
 If desired, change the time to something other than 2:00 AM.
 For example, to reboot at 4:00 AM, modify the line to look like:
 
     `Unattended-Upgrade::Automatic-Reboot-Time "04:00";`
+
+1. If the Raspberry Pi will primarily be used on cellular Internet, use the arrow keys to scroll down to find the line that contains
+`Unattended-Upgrade::Skip-Updates-On-Metered-Connections`.
+Modify it to remove the `//`, which uncomments the line.
+Change the `true` to a `false`.
+The line should now read:
+
+    `Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";`
 
 1. Press `Ctrl` + `O` to save the file.
 Press `Enter` to confirm the file name.
