@@ -564,7 +564,19 @@ The steps in this section depend on the "option" that you selected in the Bill o
 
 ### Connect Option 2: Indoor ADS-B Receiver
 
-Foo
+1. Connect the Raspberry Pi to the software-defined radio:
+    - Connect the micro USB end of the **"OTG" adapter cable** (micro USB (male) to USB (female)) to the USB port on the Raspberry Pi Zero 2 W.
+    - Connect the **software-defined radio** to the full-size USB port.
+1. Connect and power the filtered pre-amp:
+    - Connect the `RX` port on the **filtered pre-amp** to the **male SMA-to-male SMA coupler** purchased with the filtered pre-amp.
+    - Connect the other end of the coupler to the software-defined radio.
+    - Connect one end of the **USB-C charging cable** to the filtered pre-amp.
+    - Connect the other end of the USB-C charging cable to the **USB charger** and plug it in.
+    The filtered pre-amp should light up.
+1. Connect the antenna:
+    - Assemble the antenna by screwing the antenna into its magnetic base
+    - Connect the antenna to the `ANT` port on the filtered pre-amp
+1. Connect the power to the Raspberry Pi to boot it up.
 
 ### Connect Option 3: Portable ADS-B Receiver - Vehicle, Camping, or Other Travel Usage
 
