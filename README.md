@@ -183,10 +183,10 @@ As you read the rest of the bill of materials below, keep in mind that this mark
   - **Note:** The bias tee supplies power to the filtered pre-amp because the filtered pre-amp should be placed as close to the antenna as possible, whereas it is assumed that the Raspberry Pi device is further away.
   For example, the Raspberry Pi may be near the ground, and the antenna may be mounted on a rooftop antenna mast.
   In this example, it may be desirable to address power needs at the ground level rather than running power to the roof line - this is what the bias tee allows us to do.
-- **microSD power supply** the bias tee: [CanaKit 5V 2.5A Raspberry Pi power supply - affiliate link](https://amzn.to/3UC7fkd)
+- **micro-USB power supply** for the bias tee: [CanaKit 5V 2.5A Raspberry Pi power supply - affiliate link](https://amzn.to/3UC7fkd)
   **Note:** you may use another micro USB power supply if you have one!
 - **Weather/dust-proof enclosure** to encase the above equipment (not specified)
-- **SMA male to SMA male** LMR-400 cable, to run from the enclosure up to the antenna area:
+- **SMA male to SMA male LMR-400** cable, to run from the enclosure up to the antenna area:
   - 4 ft. (1.22 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 48 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-sma-male-sma-male-cable-lmr400-coax-fmc0202400lf-48-p.aspx)
   - 5 ft (1.52 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 60 Inch with Times Microwave Connectors](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-times-lmr-400-coax-fmc0202400-60-p.aspx)
   - 6 ft (1.83 m): [Low Loss SMA Male to SMA Male Cable LMR-400 Coax in 72 Inch with Times Microwave Connectors](https://www.fairviewmicrowave.com/sma-male-sma-male-cable-times-lmr-400-coax-fmc0202400-72-p.aspx)
@@ -197,7 +197,7 @@ As you read the rest of the bill of materials below, keep in mind that this mark
   - **Note:** Purchase the filtered preamp with the lug kit included.
   Lugs may make the device easier to mount in an enclosure and are easy enough to remove later if needed.
 - Another **weather/dust-proof enclosure** to encase the pre-amp and the antenna connections on it (not specified)
-- A **SMA male to N male** jumper cable, to connect the filtered pre-amp to the antenna: [Low Loss N Male to SMA Male Cable LMR-400 Coax in 12 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-n-male-sma-male-cable-lmr400-coax-fmc0102400lf-12-p.aspx)
+- A **SMA male to N male jumper cable**, to connect the filtered pre-amp to the antenna: [Low Loss N Male to SMA Male Cable LMR-400 Coax in 12 Inch with Times Microwave Connectors with LF Solder](https://www.fairviewmicrowave.com/standard-n-male-sma-male-cable-lmr400-coax-fmc0102400lf-12-p.aspx)
 - A premium **antenna** suitable for outdoor usage, like this large vertically-mounted one from DPD Productions: [ADS-B Vertical Outdoor Base Antenna (Standard 1090 MHz ES)](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/ads-b-vertical-outdoor-base-antenna)
 
 ## Required Hardware Accessories/Tools
@@ -599,4 +599,24 @@ The steps in this section depend on the "option" that you selected in the Bill o
 
 ### Connect Option 4: Permanent Outdoor Setup
 
-Foo
+**Note:** this guide cannot cover the specifics of every outdoor installation; instead, it aims to show the general connectivity sequence.
+
+**Note 2:** this guide does not include explicit instructions for bonding the antenna setup to an electrical ground.
+This is critical for lightning safety!
+For more information on this concept, check out: [Grounding and Bonding for the Radio Amateur - affiliate link](https://amzn.to/3JJkWI0).
+
+1. Connect the Raspberry Pi to the software-defined radio:
+    - Connect the micro USB end of the **"OTG" adapter cable** (micro USB (male) to USB (female)) to the USB port on the Raspberry Pi Zero 2 W.
+    - Connect the **software-defined radio** to the full-size USB port.
+1. Connect the software-defined radio to the **band-pass signal filter**.
+1. Connect the bias-tee:
+    - Connect the band-pass signal filter to the **male SMA-to-male SMA coupler**.
+    - Connect the other end of the coupler to the `RF` port on the **bias-tee**.
+    - Connect the **micro-USB power supply** to the bias-tee.
+1. Place the aforementioned equipment into a weatherproof/dustproof enclosure.
+1. Route one end of the **SMA male to SMA male LMR-400** into the enclosure and connect it to the `RF+DC` end of the bias-tee.
+1. Route the other end of the cable to where your antenna will be placed. Mount the second weatherproof/dustproof enclosure in this area. Then, route the cable into the enclosure.
+1. Attach the end of the cable to the `RX` end of the filtered pre-amp.
+1. Attach the SMA end of the **SMA male to N male jumper cable** to the `ANT` end of the filtered pre-amp.
+1. Attach the N connector to the antenna.
+1. Connect the power to the Raspberry Pi to boot it up.
